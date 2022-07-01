@@ -243,6 +243,10 @@ namespace OpenQA.Selenium.Remote
         private void CreateHttpClient()
         {
             HttpClientHandler httpClientHandler = new HttpClientHandler();
+
+            // Custom hack
+            httpClientHandler.SslProtocols = System.Security.Authentication.SslProtocols.Tls12;
+
             string userInfo = this.remoteServerUri.UserInfo;
             if (!string.IsNullOrEmpty(userInfo) && userInfo.Contains(":"))
             {
